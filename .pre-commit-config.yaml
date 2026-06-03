@@ -1,0 +1,23 @@
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.15.15
+    hooks:
+      - id: ruff
+        args: [--fix]
+        files: ^eoepca-client/
+      - id: ruff-format
+        files: ^eoepca-client/
+  - repo: local
+    hooks:
+      - id: mypy
+        name: mypy
+        entry: bash -c 'cd eoepca-client && uv run mypy eoepca_client'
+        language: system
+        files: ^eoepca-client/.*\.py$
+        pass_filenames: false
+      - id: pytest-coverage
+        name: Tests with coverage
+        entry: bash -c 'cd eoepca-client && uv run python -m pytest'
+        language: system
+        pass_filenames: false
+        always_run: true
