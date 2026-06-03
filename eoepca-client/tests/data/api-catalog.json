@@ -1,6 +1,5 @@
 {
   "$schema": "https://eoepca.org/schemas/discovery/v1.json",
-
   "linkset": [
     {
       "anchor": "https://develop.eoepca.org/.well-known/api-catalog",
@@ -8,21 +7,19 @@
         "https://www.rfc-editor.org/info/rfc9727",
         "https://eoepca.org/profiles/discovery/v1"
       ],
-
-      "eoepca:schema_version": "0.0.1",
-      "eoepca:description":    "EOEPCA+ reference deployment on CloudFerro.",
-      "eoepca:attribution":    "ESA / EOEPCA+",
+      "eoepca:schema_version": "1.0.0",
+      "eoepca:description": "EOEPCA+ reference deployment on CloudFerro.",
+      "eoepca:attribution": "ESA / EOEPCA+",
       "eoepca:deployment": {
-        "name":         "EOEPCA+ Develop",
-        "environment":  "develop",
+        "name": "EOEPCA+ Develop",
+        "environment": "develop",
         "git_revision": "a1b2c3d",
         "generated_at": "2026-06-03T08:14:00Z"
       },
-
       "self": [
         {
-          "href":    "https://develop.eoepca.org/.well-known/api-catalog",
-          "type":    "application/linkset+json",
+          "href": "https://develop.eoepca.org/.well-known/api-catalog",
+          "type": "application/linkset+json",
           "profile": "https://www.rfc-editor.org/info/rfc9727"
         }
       ],
@@ -38,32 +35,32 @@
           "type": "text/html"
         }
       ],
-
       "http://openid.net/specs/connect/1.0/issuer": [
         {
-          "href":                     "https://iam-auth.develop.eoepca.org/realms/eoepca",
-          "title":                    "Keycloak",
-          "service-desc":             "https://iam-auth.develop.eoepca.org/realms/eoepca/.well-known/openid-configuration",
-          "eoepca:realm":             "eoepca",
-          "eoepca:default_client_id": "demo"
+          "href": "https://iam-auth.develop.eoepca.org/realms/eoepca",
+          "title": "Keycloak",
+          "service-desc": "https://iam-auth.develop.eoepca.org/realms/eoepca/.well-known/openid-configuration",
+          "eoepca:realm": "eoepca",
+          "eoepca:default_client_id": "eoapi"
         }
       ],
-
       "https://eoepca.org/rel/workspace-api": [
         {
-          "href":                "https://workspace-api.develop.eoepca.org",
-          "type":                "application/json",
-          "title":               "Workspace API",
-          "eoepca:auth":         "oidc",
-          "eoepca:api_version":  "2.1",
-          "eoepca:naming":        { "pattern": "ws-{username}", "prefix": "ws" }
+          "href": "https://workspace-api.develop.eoepca.org",
+          "type": "application/json",
+          "title": "Workspace API",
+          "eoepca:auth": "oidc",
+          "eoepca:api_version": "2.1",
+          "eoepca:naming": {
+            "pattern": "ws-{username}",
+            "prefix": "ws"
+          }
         }
       ],
-
       "data": [
         {
-          "href":  "https://resource-catalogue.develop.eoepca.org",
-          "type":  "application/json",
+          "href": "https://resource-catalogue.develop.eoepca.org",
+          "type": "application/json",
           "title": "Resource catalogue (open)",
           "conformsTo": [
             "https://api.stacspec.org/v1.0.0/core",
@@ -73,107 +70,105 @@
           "eoepca:auth": "none"
         },
         {
-          "href":        "https://resource-catalogue-protected.develop.eoepca.org",
-          "type":        "application/json",
-          "title":       "Resource catalogue (protected)",
+          "href": "https://resource-catalogue-protected.develop.eoepca.org",
+          "type": "application/json",
+          "title": "Resource catalogue (protected)",
           "eoepca:auth": "oidc-uma"
         },
         {
-          "href":  "https://eoapi.develop.eoepca.org/stac",
-          "type":  "application/json",
+          "href": "https://eoapi.develop.eoepca.org/stac",
+          "type": "application/json",
           "title": "eoAPI STAC",
           "conformsTo": [
             "https://api.stacspec.org/v1.0.0/core",
             "https://api.stacspec.org/v1.0.0/item-search"
           ],
-          "eoepca:auth":        "oidc-write",
+          "eoepca:auth": "oidc-write",
           "eoepca:api_version": "1.0.0"
         },
         {
-          "href":       "https://eoapi.develop.eoepca.org/vector",
-          "type":       "application/json",
-          "title":      "eoAPI vector (TiPg)",
-          "conformsTo": ["http://www.opengis.net/spec/ogcapi-features-1/1.0/conf/core"]
+          "href": "https://eoapi.develop.eoepca.org/vector",
+          "type": "application/json",
+          "title": "eoAPI vector (TiPg)",
+          "conformsTo": [
+            "http://www.opengis.net/spec/ogcapi-features-1/1.0/conf/core"
+          ]
         }
       ],
-
       "https://eoepca.org/rel/harvester": [
         {
-          "href":             "https://registration-harvester-api.develop.eoepca.org/flowable-rest",
-          "type":             "application/json",
-          "title":            "Harvester (Flowable)",
-          "eoepca:engine":    "flowable"
+          "href": "https://registration-harvester-api.develop.eoepca.org/flowable-rest",
+          "type": "application/json",
+          "title": "Harvester (Flowable)",
+          "eoepca:engine": "flowable"
         }
       ],
-
       "http://www.opengis.net/def/rel/ogc/1.0/processes": [
         {
-          "href":               "https://zoostd.develop.eoepca.org/ogc-api",
-          "type":               "application/json",
-          "title":              "Processing (ZOO-DRU standard)",
-          "eoepca:flavor":      "zoo-dru-std",
-          "eoepca:auth":        "oidc-uma",
+          "href": "https://zoostd.develop.eoepca.org/ogc-api",
+          "type": "application/json",
+          "title": "Processing (ZOO-DRU standard)",
+          "eoepca:flavor": "zoo-dru-std",
+          "eoepca:auth": "oidc-uma",
           "eoepca:api_version": "OGC API Processes Part 1 / 1.0"
         },
         {
-          "href":               "https://zookeda.develop.eoepca.org/ogc-api",
-          "type":               "application/json",
-          "title":              "Processing (ZOO-DRU KEDA)",
-          "eoepca:flavor":      "zoo-dru-keda",
-          "eoepca:auth":        "oidc-uma",
+          "href": "https://zookeda.develop.eoepca.org/ogc-api",
+          "type": "application/json",
+          "title": "Processing (ZOO-DRU KEDA)",
+          "eoepca:flavor": "zoo-dru-keda",
+          "eoepca:auth": "oidc-uma",
           "eoepca:api_version": "OGC API Processes Part 1 / 1.0"
         }
       ],
-
       "https://eoepca.org/rel/openeo": [
         {
-          "href":               "https://eoapi.develop.eoepca.org/openeo",
-          "type":               "application/json",
-          "title":              "TiTiler-OpenEO",
-          "eoepca:backend_id":  "titiler-openeo",
+          "href": "https://eoapi.develop.eoepca.org/openeo",
+          "type": "application/json",
+          "title": "TiTiler-OpenEO",
+          "eoepca:backend_id": "titiler-openeo",
           "eoepca:api_version": "1.2.0"
         },
         {
-          "href":               "https://openeofed.develop.eoepca.org",
-          "type":               "application/json",
-          "title":              "OpenEO Federation",
-          "eoepca:backend_id":  "federation",
-          "eoepca:role":        "aggregator",
+          "href": "https://openeofed.develop.eoepca.org",
+          "type": "application/json",
+          "title": "OpenEO Federation",
+          "eoepca:backend_id": "federation",
+          "eoepca:role": "aggregator",
           "eoepca:api_version": "1.2.0"
         }
       ],
-
       "https://eoepca.org/rel/datacube-access": [
         {
-          "href":  "https://datacube-access.develop.eoepca.org",
-          "type":  "text/html",
+          "href": "https://datacube-access.develop.eoepca.org",
+          "type": "text/html",
           "title": "Datacube Access"
         }
       ],
-
       "https://eoepca.org/rel/resource-health": [
         {
-          "href":         "https://resource-health.develop.eoepca.org",
-          "type":         "text/html",
-          "title":        "Resource Health",
-          "eoepca:apis":  { "healthchecks": "/api/healthchecks/v1", "telemetry": "/api/telemetry/v1" }
+          "href": "https://resource-health.develop.eoepca.org",
+          "type": "text/html",
+          "title": "Resource Health",
+          "eoepca:apis": {
+            "healthchecks": "/api/healthchecks/v1",
+            "telemetry": "/api/telemetry/v1"
+          }
         }
       ],
-
       "https://eoepca.org/rel/notifications": [
         {
-          "href":                     "https://notifications.develop.eoepca.org",
-          "type":                     "application/json",
-          "title":                    "CloudEvents broker",
+          "href": "https://notifications.develop.eoepca.org",
+          "type": "application/json",
+          "title": "CloudEvents broker",
           "eoepca:knative_subdomain": "na.develop.eoepca.org"
         }
       ],
-
       "https://eoepca.org/rel/s3": [
         {
-          "href":                   "https://minio.develop.eoepca.org",
-          "title":                  "MinIO S3 endpoint",
-          "eoepca:region":          "eoepca-demo",
+          "href": "https://minio.develop.eoepca.org",
+          "title": "MinIO S3 endpoint",
+          "eoepca:region": "eoepca-demo",
           "eoepca:virtual_hosting": false
         }
       ]

@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://eoepca.org/schemas/discovery/v1.json",
+  "title": "EOEPCA+ API Catalog (RFC 9727)",
+  "description": "Schema for the document at `/.well-known/api-catalog`. RFC 9727 well-known URI, RFC 9264 Linkset format (`application/linkset+json`). Service URLs are link targets keyed by `rel`.",
+  "type": "object",
+  "required": ["linkset"],
+  "additionalProperties": true,
+  "properties": {
+    "$schema": { "type": "string", "format": "uri" },
+    "linkset": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/LinkContext" },
+      "contains": {
+        "type": "object",
+        "required": ["anchor"],
+        "properties": {
+          "anchor": { "type": "string", "pattern": "/\\.well-known/api-catalog$" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "LinkContext": {
+      "type": "object",
+      "required": ["anchor"],
+      "properties": {
+        "anchor": { "type": "string", "format": "uri" },
+        "profile": {
+          "type": ["string", "array"],
+          "items": { "type": "string", "format": "uri" }
+        },
+        "eoepca:schema_version": { "type": "string", "pattern": "^1\\.[0-9]+\\.[0-9]+$" },
+        "eoepca:description": { "type": "string" },
+        "eoepca:attribution": { "type": "string" },
+        "eoepca:deployment": { "$ref": "#/$defs/Deployment" }
+      },
+      "additionalProperties": { "$ref": "#/$defs/TargetArray" }
+    },
+    "TargetArray": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/Target" }
+    },
+    "Target": {
+      "type": "object",
+      "required": ["href"],
+      "additionalProperties": true,
+      "properties": {
+        "href": { "type": "string", "format": "uri-reference" },
+        "type": { "type": "string" },
+        "title": { "type": "string" },
+        "profile": {
+          "type": ["string", "array"],
+          "items": { "type": "string", "format": "uri" }
+        },
+        "service-desc": { "type": "string", "format": "uri" },
+        "conformsTo": {
+          "type": "array",
+          "items": { "type": "string", "format": "uri" }
+        },
+        "eoepca:auth": { "$ref": "#/$defs/AuthMode" },
+        "eoepca:api_version": { "type": "string" },
+        "eoepca:realm": { "type": "string" },
+        "eoepca:default_client_id": { "type": "string" },
+        "eoepca:naming": { "$ref": "#/$defs/NamingPattern" },
+        "eoepca:engine": { "type": "string", "enum": ["flowable", "operaton", "camunda"] },
+        "eoepca:flavor": { "type": "string", "enum": ["zoo-dru-std", "zoo-dru-keda", "zoo-dru-wes"] },
+        "eoepca:backend_id": { "type": "string" },
+        "eoepca:role": { "type": "string", "enum": ["backend", "aggregator"] },
+        "eoepca:region": { "type": "string" },
+        "eoepca:virtual_hosting": { "type": "boolean" },
+        "eoepca:knative_subdomain": { "type": "string" },
+        "eoepca:apis": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        }
+      }
+    },
+    "AuthMode": {
+      "type": "string",
+      "enum": ["none", "oidc", "oidc-write", "oidc-uma"],
+      "description": "none: open. oidc: bearer required. oidc-write: open for GET/HEAD/OPTIONS. oidc-uma: bearer + UMA ticket."
+    },
+    "NamingPattern": {
+      "type": "object",
+      "required": ["pattern"],
+      "additionalProperties": true,
+      "properties": {
+        "pattern": { "type": "string" },
+        "prefix": { "type": "string" }
+      }
+    },
+    "Deployment": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "name": { "type": "string" },
+        "environment": { "type": "string" },
+        "git_revision": { "type": "string" },
+        "generated_at": { "type": "string", "format": "date-time" }
+      }
+    }
+  }
+}

@@ -21,7 +21,7 @@ def test_platform_from_catalog_file() -> None:
     assert cfg.name == "develop.eoepca.org"
     assert cfg.keycloak_url == "https://iam-auth.develop.eoepca.org"
     assert cfg.realm == "eoepca"
-    assert cfg.client_id == "demo"
+    assert cfg.client_id == "eoapi"
     assert cfg.stac_url == "https://eoapi.develop.eoepca.org/stac"
     assert cfg.iam_issuer == "https://iam-auth.develop.eoepca.org/realms/eoepca"
 
@@ -29,7 +29,7 @@ def test_platform_from_catalog_file() -> None:
 def test_resolve_platform_from_catalog_file() -> None:
     cfg = resolve_platform(str(FIXTURE))
     assert cfg.stac_url == "https://eoapi.develop.eoepca.org/stac"
-    assert cfg.client_id == "demo"
+    assert cfg.client_id == "eoapi"
 
 
 def test_prefers_oidc_write_stac(tmp_path: Path) -> None:
@@ -63,7 +63,7 @@ def test_platform_from_catalog_domain() -> None:
     )
     cfg = platform_from_catalog("staging.example.org")
     assert cfg.name == "develop.eoepca.org"
-    assert cfg.client_id == "demo"
+    assert cfg.client_id == "eoapi"
 
 
 @respx.mock
