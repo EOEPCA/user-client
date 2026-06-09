@@ -2,18 +2,8 @@
 
 from importlib.metadata import version as _version
 
-from .logging import get_logger, logger, setup_logging
+from .client import Client
 
 __version__ = _version("eoepca-client")
 
-
-__all__ = ["__version__", "version", "get_logger", "setup_logging", "logger"]
-
-
-def version() -> None:
-    """Print the current version."""
-    print(f"eoepca-client version: {__version__}")
-
-
-if __name__ == "__main__":
-    version()
+__all__ = ["Client", "__version__"]

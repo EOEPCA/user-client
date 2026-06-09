@@ -4,14 +4,20 @@ build-backend = "hatchling.build"
 
 [project]
 name = "eoepca-client"
-version = "0.0.1"
+version = "0.1.0"
 description = "Client library and CLI for EOEPCA."
 requires-python = ">=3.12"
 authors = [
     { name = "Development Seed" }
 ]
 dependencies = [
-    "loguru>=0.7.3",
+    "httpx>=0.28.0",
+    "pydantic>=2.0",
+    "PyJWT>=2.10.0",
+    "pystac-client>=0.8.0",
+    "python-keycloak>=5.0.0",
+    "rich>=13.0.0",
+    "typer>=0.15.0",
 ]
 readme = "README.md"
 license = "Apache-2.0"
@@ -24,10 +30,14 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 
+[project.scripts]
+eoepca = "eoepca_client.cli:app"
+
 [project.optional-dependencies]
 test = [
     "pytest>=8.4.2",
     "pytest-cov",
+    "respx>=0.22.0",
 ]
 dev = [
     "pre-commit",
@@ -62,10 +72,6 @@ packages = ["eoepca_client"]
 python_version = "3.12"
 strict = true
 ignore_missing_imports = true
-
-[[tool.mypy.overrides]]
-module = "eoepca_client.logging"
-disable_error_code = ["return-value"]
 
 [tool.pytest.ini_options]
 addopts = [
