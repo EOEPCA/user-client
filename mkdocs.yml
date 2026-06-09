@@ -1,11 +1,11 @@
-site_name: EOEPCA Document Template
-site_url: https://eoepca.readthedocs.io/projects/template/
-repo_url: https://github.com/EOEPCA/document-template/
+site_name: EOEPCA User Client
+site_url: https://eoepca.readthedocs.io/projects/user-client/
+repo_url: https://github.com/EOEPCA/user-client/
 edit_uri: "edit/main/docs/"
 
 nav:
   - EOEPCA Documentation: https://eoepca.readthedocs.io/
-  - Building-block Name:
+  - User Client:
     - index.md
     - Getting Started:
       - getting-started/quick-start.md
@@ -20,7 +20,7 @@ nav:
       - admin/configuration.md
       - admin/maintenance.md
     - API:
-      - api/endpoint-specification.md
+      - api/api-catalog.md
       - api/usage.md
 
 # Footer links
