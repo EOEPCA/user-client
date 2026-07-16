@@ -196,7 +196,7 @@ def test_cli_help_and_version() -> None:
 
 @respx.mock
 def test_stac_collections_from_catalog_file() -> None:
-    catalog = Path(__file__).parent / "data" / "api-catalog.json"
+    catalog = Path(__file__).resolve().parents[2] / "docs/api/schema/example.json"
     respx.get(f"{STAC_URL}/collections").mock(
         return_value=httpx.Response(
             200, json={"collections": [{"id": "from-catalog", "title": "Via catalog"}]}

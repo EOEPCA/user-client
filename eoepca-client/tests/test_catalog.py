@@ -13,7 +13,8 @@ from eoepca_client.catalog import platform_from_catalog
 from eoepca_client.config import resolve_platform
 from eoepca_client.stac_tx import EoepcaError
 
-FIXTURE = Path(__file__).parent / "data" / "api-catalog.json"
+REPO_ROOT = Path(__file__).resolve().parents[2]
+FIXTURE = REPO_ROOT / "docs/api/schema/example.json"
 
 
 def test_platform_from_catalog_file() -> None:
